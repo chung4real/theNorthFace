@@ -1,0 +1,51 @@
+// 头部
+.search {
+  float: left;
+  width: 150px;
+}
+
+.header {
+  height: 75px;
+  width: 100%;
+  min-width: 1400px;
+}
+
+.hd-content {
+  height: 75px;
+  width: 1400px;
+  margin: auto;
+}
+
+.hd-logo {
+  float: left;
+  padding: 10px 15px;
+  vertical-align: middle;
+}
+
+ul {
+  float: left;
+  margin-left: 150px;
+}
+
+li {
+  line-height: 75px;
+  float: left;
+  text-align: center;
+}
+
+li a {
+  text-decoration: none;
+  color: #333;
+  padding: 10px 15px;
+  margin-left: 20px;
+}
+
+.hd-info a:hover {
+  text-decoration: none;
+  color: #fff;
+  background-color: #000;
+}
+
+.user {
+  float: right;
+}

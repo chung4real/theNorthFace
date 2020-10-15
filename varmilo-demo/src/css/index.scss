@@ -1,0 +1,196 @@
+@charset "utf-8";
+@import './modules/common';
+@import './modules/header';
+@import './modules/footer';
+
+// 轮播图广告
+.banner {
+  width: 100%;
+  height: 615px;
+  min-width: 1400px;
+}
+
+.ba-box {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+}
+
+.ba-box img {
+  width: 100%;
+  height: 615px;
+}
+
+// 产品介绍
+.pro-intro {
+  width: 1200px;
+  height: 1170px;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.pro-left {
+  float: left;
+  width: 530px;
+  height: 800px;
+}
+
+.pro-1 {
+  overflow: hidden;
+  // float: auto 10px;
+  width: 530px;
+  height: 260px;
+  position: relative;
+}
+
+.theme {
+  position: absolute;
+  cursor: pointer;
+  width: 100px;
+  height: 40px;
+  line-height: 40px;
+  left: 50px;
+  top: 150px;
+  color: #fff;
+  text-align: center;
+  border-radius: 10px;
+  border: 1px solid #fff;
+}
+
+.theme:hover {
+  background-color: #666;
+  border: 1px solid transparent;
+}
+
+.pro-1 img {
+  width: 530px;
+  height: 260px;
+  transition: all 0.6s;
+}
+
+.pro-3 {
+  overflow: hidden;
+  float: auto 10px;
+  position: relative;
+  width: 530px;
+  height: 520px;
+  margin-top: 10px;
+}
+
+.pro-3 img {
+  width: 530px;
+  height: 530px;
+  transition: all 0.6s;
+}
+
+.pro-right {
+  float: left;
+  width: 660px;
+  height: 800px;
+  margin-left: 8px;
+}
+
+
+.pro-2 {
+  overflow: hidden;
+  float: auto 10px;
+  position: relative;
+  width: 660px;
+  height: 360px;
+}
+
+.pro-2 img {
+  width: 520px;
+  height: 360px;
+  float: left;
+  transition: all 0.6s;
+}
+
+.pro-text img {
+  width: 52px;
+  height: 360px;
+  margin-left: 18px;
+}
+
+.pro-text {
+  float: left;
+  cursor: pointer;
+}
+
+.pro-4 {
+  overflow: hidden;
+  float: auto 10px;
+  position: relative;
+  width: 660px;
+  height: 430px;
+  margin-top: 10px;
+}
+
+.pro-4 img {
+  width: 660px;
+  height: 430px;
+  transition: all 0.6s;
+}
+
+.pro-bottom {
+  float: left;
+  width: 1200px;
+  height: 360px;
+  margin-top: 15px;
+}
+
+.pro-5 {
+  overflow: hidden;
+  float: auto 10px;
+  position: relative;
+  float: left;
+  width: 650px;
+  height: 340px;
+}
+
+.pro-5 img {
+  width: 650px;
+  height: 340px;
+  transition: all 0.6s;
+}
+
+.pro-6 {
+  overflow: hidden;
+  float: auto 10px;
+  position: relative;
+  float: left;
+  width: 525px;
+  height: 340px;
+  margin-left: 20px;
+}
+
+.pro-6 img {
+  width: 525px;
+  height: 340px;
+  transition: all 0.6s;
+}
+
+.pro-1 img:hover {
+  transform: scale(1.1);
+}
+
+.pro-2 img:hover {
+  transform: scale(1.1);
+}
+
+.pro-3 img:hover {
+  transform: scale(1.1);
+}
+
+.pro-4 img:hover {
+  transform: scale(1.1);
+}
+
+.pro-5 img:hover {
+  transform: scale(1.1);
+}
+
+.pro-6 img:hover {
+  transform: scale(1.1);
+}
+

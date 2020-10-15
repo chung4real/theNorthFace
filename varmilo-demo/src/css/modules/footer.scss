@@ -1,0 +1,41 @@
+// 底部
+footer {
+  text-align: center;
+  width: 100%;
+  min-width: 1400px;
+  height: 310px;
+  background-color: #2d2d2d;
+}
+.ft-bottom :nth-child(1){
+  margin-top: 10px;
+}
+.ft-left{
+  border-right: 1px solid #545454;
+  
+}
+.ft-left,.ft-right{
+  float: left;
+  width: 50%;
+  height: 130px;
+  color: #545454;
+  text-align: center;
+}
+.ft-left img,.ft-right img{
+  margin-top: 20px;
+}
+.ft-left p,.ft-right p{
+  margin-top: 5px; 
+}
+.ft-bottom{
+  float: left;
+  width: 100%;
+  color: #545454;
+  border-top: 1px solid #545454;
+}
+.ft-pay span,.ft-company span{
+  margin-top: 5px;
+  margin-left: 30px;
+}
+.ft-company{
+  margin-top: 5px;
+}

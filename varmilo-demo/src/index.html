@@ -1,12 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>varmilo 阿米洛机械键盘官方网站</title>
+  <!-- 引入一个bootstrap -->
+  <link rel="stylesheet" href="/libs/bootstrap/css/bootstrap.min.css">
+  <!-- 公共样式表 -->
+  <link rel="stylesheet" href="/css/modules/common.css">
+  <!-- 首页css -->
   <link rel="stylesheet" href="/css/index.css">
 </head>
+
 <body>
-  
+  <header></header>
+  <!-- 轮播图广告 -->
+  <main>
+    <div class="banner">
+      <ul class="ba-box">
+        <li class="active" style="width: 100%;"><img src="/images/index/0815120017.png" alt=""></li>
+        <!-- <li class="active"><img src="/images/index/0815120017.png" alt=""></li>
+          <li class="active"><img src="/images/index/0815120017.png" alt=""></li>
+          <li class="active"><img src="/images/index/0815120017.png" alt=""></li>
+          <li class="active"><img src="/images/index/0815120017.png" alt=""></li> -->
+      </ul>
+      <ol>
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ol>
+      <a href="javascript:;" id="goPrev"></a>
+      <a href="javascript:;" id="goNext"></a>
+    </div>
+    <!-- 产品介绍 -->
+    <div class="pro-intro">
+      <div class="pro-left">
+        <div class="pro-1">
+          <img src="/images/index/0605111317.png">
+          <div class="theme">主题键盘></div>iv
+        </div>
+        <div class="pro-3">
+          <img src="/images/index/0605111359.png" alt="">
+          <div class="theme" style="position: absolute;top: 420px;left: 420px;">主题键盘></div>
+          <div class="theme" style="position: absolute;top: 470px;left: 420px;">开始定制></div>
+        </div>
+      </div>
+      <div class="pro-right">
+        <div class="pro-2">
+          <!-- TODO:一移入问题未解决 -->
+          <img src="/images/index/0605111328.png" alt="">
+          <div class="theme">主题键盘></div>
+          <div class="pro-text">
+            <img src="/images/index/text1.png" class="">
+            <img src="/images/index/text2.png" class="">
+          </div>
+        </div>
+        <div class="pro-4">
+          <img src="/images/index/0605111411.png" alt="">
+          <div class="theme" style="position: absolute;left: 520px;top: 330px;">主题键盘></div>
+          <div class="theme" style="position: absolute;left: 520px;top: 380px;">开始定制></div>
+        </div>
+      </div>
+      <div class="pro-bottom">
+        <div class="pro-5">
+          <img src="/images/index/0605111420.png" alt="">
+          <div class="theme" style="position: absolute;left: 500px;top: 250px;">主题键盘></div>
+        </div>
+        <div class="pro-6">
+          <img src="/images/index/0605111429.png" alt="">
+          <div class="theme" style="position: absolute;left: 10px;top: 10px;">主题键盘></div>
+          <div class="theme" style="position: absolute;left: 10px;top: 60px;">开始定制></div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <!-- 底部 -->
+  <footer></footer>
+  <script src="/libs/jquery-3.5.1.min.js"></script>
+  <script>
+    // 头部、底部复用
+    $('header').load('/html/multiplex/header.html')
+    $('footer').load('/html/multiplex/footer.html')
+  </script>
 </body>
+
 </html>
