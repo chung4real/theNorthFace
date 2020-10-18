@@ -29,9 +29,13 @@ const paths = {
   imgs: {
     src: 'src/images/**',
     dest: 'dist/images'
+  },
+  ico: {
+    src: 'src/favicon.ico',
+    dest: 'dist'
   }
 }
-// 制定删除任务 真香!!!
+// 制定删除任务
 const delDist = () => del('dist')
 
 // 制定html任务
@@ -78,6 +82,9 @@ const imgs = () => gulp.src(paths.imgs.src).pipe(gulp.dest(paths.imgs.dest))
 // 制定libs任务,移动图片到dist目录
 const libs = () => gulp.src(paths.libs.src).pipe(gulp.dest(paths.libs.dest))
 
+// 把ico图标移动到dist目录
+const ico = () => gulp.src(paths.ico.src).pipe(gulp.dest(paths.ico.dest))
+
 const server = () => {
   connect.server({
     root: 'dist',
@@ -101,5 +108,6 @@ const watch = () => {
   gulp.watch(paths.js.src, js)
 }
 
+
 // 默认导出任务且只用导出一次
-module.exports.default = gulp.series(delDist, gulp.parallel(html, css, js, imgs, libs, watch, server))
+module.exports.default = gulp.series(delDist, gulp.parallel(html, css, js, imgs, libs, watch, server,ico))

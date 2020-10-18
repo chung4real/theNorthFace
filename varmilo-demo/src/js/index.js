@@ -1,6 +1,10 @@
-const fn = function (a, b) {
-  console.log(a + b)
-  console.log(this);
-}
-
-fn(323, 32)
+require(['./config'], () => {
+  require(['header', 'footer'], () => {
+    class Index {
+      constructor() {
+        
+      }
+    }
+    new Index()
+  })
+})
