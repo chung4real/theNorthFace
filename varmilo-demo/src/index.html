@@ -7,31 +7,33 @@
   <title>varmilo 阿米洛机械键盘官方网站</title>
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="stylesheet" href="/libs/bootstrap/css/bootstrap.min.css">
-  <!-- <link rel="stylesheet" href="/css/modules/common.css"> -->
+  <!-- 引入两个swiper -->
+  <link rel="stylesheet" href="/libs/swiper/css/swiper.min.css">
   <link rel="stylesheet" href="/css/index.css">
 </head>
-
+  <style>
+    .swiper-container {
+    width: 100%;
+    height: 615px;
+}
+  </style>
 <body>
   <header class=".header"></header>
   <!-- 轮播图广告 -->
   <main>
-    <div class="banner">
-      <ul class="ba-box">
-        <li class="active" style="width: 100%;"><img src="/images/index/0815120017.png" alt=""></li>
-        <!-- <li class="active"><img src="/images/index/0815120017.png" alt=""></li>
-          <li class="active"><img src="/images/index/0815120017.png" alt=""></li>
-          <li class="active"><img src="/images/index/0815120017.png" alt=""></li>
-          <li class="active"><img src="/images/index/0815120017.png" alt=""></li> -->
+    <div class="banner swiper-container">
+      <ul class="ba-box swiper-wrapper">
+        <li class="active swiper-slide" style="width: 100%;"><img src="/images/index/0706101657.png"></li>
+        <li class="swiper-slide"><img src="/images/index/lun1.png"></li>
+        <li class="swiper-slide"><img src="/images/index/0904010812.png"></li>
+        <li class="swiper-slide"><img src="/images/index/custornimg.jpg"></li>
+        <li class="swiper-slide"><img src="/images/index/0815120017.png"></li>
       </ul>
-      <ol>
-        <li class="active"></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-      </ol>
-      <a href="javascript:;" id="goPrev"></a>
-      <a href="javascript:;" id="goNext"></a>
+      <!-- 如果需要分页器 -->
+    <div class="swiper-pagination"></div>
+    <!-- 如果需要导航按钮 -->
+    <div class="swiper-button-prev swiper-button-white"></div>
+    <div class="swiper-button-next swiper-button-white"></div>
     </div>
     <!-- 产品介绍 -->
     <div class="pro-intro">
@@ -48,7 +50,6 @@
       </div>
       <div class="pro-right">
         <div class="pro-2">
-          <!-- TODO:一移入问题未解决 -->
           <img src="/images/index/0605111328.png" alt="">
           <div class="theme">主题键盘></div>
           <div class="pro-text">
@@ -77,12 +78,7 @@
   </main>
   <!-- 底部 -->
   <footer></footer>
-  <!-- <script src="/libs/jquery-3.5.1.min.js"></script> -->
-  <!-- <script>
-    // 头部、底部复用
-    $('header').load('/html/multiplex/header.html')
-    $('footer').load('/html/multiplex/footer.html')
-  </script> -->
+  <script src="/libs/swiper/js/swiper.min.js"></script>
   <script src="/libs/require/require.min.js" data-main="/js/index"></script>
 </body>
 

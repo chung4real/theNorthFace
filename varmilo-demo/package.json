@@ -20,6 +20,7 @@
     "uglify": "^0.1.5"
   },
   "dependencies": {
+    "element-ui": "^2.13.2",
     "gulp-cli": "^2.3.0"
   }
 }
