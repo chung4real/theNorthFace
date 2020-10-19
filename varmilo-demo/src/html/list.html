@@ -50,92 +50,26 @@
       <button class="reset-choice form-control">重置选项</button>
     </div>
     <!-- 商品展示部分 -->
-    <div class="list-intro">
-      <div class="list-pro">
-        <a href="/html/detail.html" target="_blank">
-          <img src="/images/list/1.png" alt="">
-          <div class="list-title">Sword68CMYK</div>
-          <div class="list-model">Sword68</div>
-          <div class="list-model">热升华正刻</div>
-          <button class="purchase form-control">了解｜购买</button>
-        </a>
-      </div>
-      <div class="list-pro">
-        <a href="#" target="_blank">
-          <img src="/images/list/1.png" alt="">
-          <div class="list-title">Sword68CMYK</div>
-          <div class="list-model">Sword68</div>
-          <div class="list-model">热升华正刻</div>
-          <button class="purchase form-control">了解｜购买</button>
-        </a>
-      </div>
-      <div class="list-pro">
-        <a href="#" target="_blank">
-          <img src="/images/list/1.png" alt="">
-          <div class="list-title">Sword68CMYK</div>
-          <div class="list-model">Sword68</div>
-          <div class="list-model">热升华正刻</div>
-          <button class="purchase form-control">了解｜购买</button>
-        </a>
-      </div>
-      <div class="list-pro">
-        <a href="#" target="_blank">
-          <img src="/images/list/1.png" alt="">
-          <div class="list-title">Sword68CMYK</div>
-          <div class="list-model">Sword68</div>
-          <div class="list-model">热升华正刻</div>
-          <button class="purchase form-control">了解｜购买</button>
-        </a>
-      </div>
-      <div class="list-pro">
-        <a href="#" target="_blank">
-          <img src="/images/list/1.png" alt="">
-          <div class="list-title">Sword68CMYK</div>
-          <div class="list-model">Sword68</div>
-          <div class="list-model">热升华正刻</div>
-          <button class="purchase form-control">了解｜购买</button>
-        </a>
-      </div>
-      <div class="list-pro">
-        <a href="#" target="_blank">
-          <img src="/images/list/1.png" alt="">
-          <div class="list-title">Sword68CMYK</div>
-          <div class="list-model">Sword68</div>
-          <div class="list-model">热升华正刻</div>
-          <button class="purchase form-control">了解｜购买</button>
-        </a>
-      </div>
-      <div class="list-pro">
-        <a href="#" target="_blank">
-          <img src="/images/list/1.png" alt="">
-          <div class="list-title">Sword68CMYK</div>
-          <div class="list-model">Sword68</div>
-          <div class="list-model">热升华正刻</div>
-          <button class="purchase form-control">了解｜购买</button>
-        </a>
-      </div>
-      <div class="list-pro">
-        <a href="#" target="_blank">
-          <img src="/images/list/1.png" alt="">
-          <div class="list-title">Sword68CMYK</div>
-          <div class="list-model">Sword68</div>
-          <div class="list-model">热升华正刻</div>
-          <button class="purchase form-control">了解｜购买</button>
-        </a>
-      </div>
-      <div class="list-pro">
-        <a href="#" target="_blank">
-          <img src="/images/list/1.png" alt="">
-          <div class="list-title">Sword68CMYK</div>
-          <div class="list-model">Sword68</div>
-          <div class="list-model">热升华正刻</div>
-          <button class="purchase form-control">了解｜购买</button>
-        </a>
-      </div>
+    <div class="list-intro" id="list-intro">
+      <!-- 本地json数据渲染 -->
+      <script type="text/html" id="list-proTemplate">
+        {{each list item}}
+        <div class="list-pro">
+          <a href="/html/detail.html" target="_blank" >
+            <img src="{{item.src}}" alt="">
+            <div class="list-title">{{item.title}}</div>
+            <div class="list-model">{{item.model}}</div>
+            <div class="list-model">{{item.content}}</div>
+            <button class="purchase form-control">了解｜购买</button>
+          </a> 
+        </div>
+        {{/each}}
+      </script>
     </div>
   </main>
   <!-- 头部复用 -->
-  <script src="/libs/require/require.min.js" data-main="/js/index"></script>
+  <script src="/libs/require/require.min.js" data-main="/js/list"></script>
+  <!-- <script src="/libs/require/require.min.js" data-main="/js/list"></script> -->
 </body>
 
 </html>

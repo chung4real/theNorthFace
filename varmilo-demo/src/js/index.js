@@ -2,16 +2,13 @@ require(['./config'], () => {
   require(['swiper', 'header', 'footer'], (swiper) => {
     class Index {
       constructor() {
-        // this.moveTop()
+
 
       }
-      // 轮播图效果
-      // moveTop() {
 
-      // } 
     }
     new Index()
-    var mySwiper = new swiper('.swiper-container', {
+    const mySwiper = new swiper('.swiper-container', {
       loop: true, // 循环模式选项
       speed: 1500,
       autoplay: {
@@ -24,7 +21,7 @@ require(['./config'], () => {
       pagination: {
         el: '.swiper-pagination',
         clickable: true,
-        type:'progressbar'
+        type: 'progressbar'
       },
       // 如果需要前进后退按钮
       navigation: {
