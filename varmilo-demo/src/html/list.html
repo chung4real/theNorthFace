@@ -58,9 +58,9 @@
     <script type="text/html" id="listProTemplate">
         {{each list shop}}
           <div class="list-pro">
-            <a href="/html/detail.html" target="_blank">
+            <a href="/html/detail.html?id={{shop.id}}" target="_blank">
               <img src="{{shop.image}}" alt="">
-              <div class="list-title" style="white-space: nowrap;text-overflow: ellipsis; overflow: hidden;">{{shop.title}}</div>
+              <div class="list-title">{{shop.title.slice(0,15)}}...</div>
               <div class="list-model">现价：{{shop.price}}</div>
               <div class="list-model">原价：{{shop.originPrice}}</div>
               <button class="purchase form-control">了解｜购买</button>

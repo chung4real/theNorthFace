@@ -10,7 +10,11 @@ require(['./config'], () => {
         // 从接口地址栏获取id
         const id = location.search.slice(4)
         return new Promise(resolve => {
-          $.get('/api/detail?id=8808691&normal=1&sa=', resp => {
+          $.get(`/api/detail`, {
+            id: id,
+            normal: 1,
+            sa: ''
+          }, resp => {
             if (resp.code === 200) {
               const {
                 id,
@@ -60,17 +64,16 @@ require(['./config'], () => {
               cart.push({
                 ...this.detail,
                 count: 1,
-                check:true
+                check: true
               })
             }
             localStorage.setItem('cart', JSON.stringify(cart))
           } else {
             // 购物车数据为空,存当前数据
-
             localStorage.setItem('cart', JSON.stringify([{
               ...this.detail,
               count: 1,
-              check:true
+              check: true
             }]))
           }
         })

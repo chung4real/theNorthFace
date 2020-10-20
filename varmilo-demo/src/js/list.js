@@ -13,7 +13,7 @@ require(['./config'], () => {
               let { list } = resp.data
               $('#tabList').html(
                 template('tabListTemplate', {
-                  list: list.slice(2, 7)
+                  list: list.slice(2, 6)
                 })
               )
               resolve()
@@ -24,10 +24,8 @@ require(['./config'], () => {
       getList() {
         const id = location.search.slice(4)
         $.get(`https://xiongmaoyouxuan.com/api/tab/${id}`, { start: 0 }, resp => {
-          console.log(resp);
           if (resp.code === 200) {
             const { list } = resp.data.items
-            console.log(list)
             $('#list-intro').html(template('listProTemplate', {
               list: list.slice(0, 10)
             }))
