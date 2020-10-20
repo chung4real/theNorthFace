@@ -2,18 +2,36 @@ require(['./config'], () => {
   require(['template', 'header'], (template) => {
     class List {
       constructor() {
-        this.getData()
+        this.getTabs().then(() => {
+          this.getList()
+        })
       }
-      getData() {
-        // 根据本地json渲染
-        $.get('/libs/json/productList.json', resp => {
-          // template第一个参数传入模版的script的id,不加#
-          // 第二参数写对象,传入模版里所需要的属性
-          // 模版里面写需要的list,这个数组是我从json获取到的resp
-          const html = template('list-proTemplate', {
-            list: resp
+      getTabs() {
+        return new Promise(resolve => {
+          $.get('https://xiongmaoyouxuan.com/api/tabs', resp => {
+            if (resp.code === 200) {
+              let { list } = resp.data
+              $('#tabList').html(
+                template('tabListTemplate', {
+                  list: list.slice(2, 7)
+                })
+              )
+              resolve()
+            }
           })
-          $('#list-intro').html(html)
+        })
+      }
+      getList() {
+        const id = location.search.slice(4)
+        $.get(`https://xiongmaoyouxuan.com/api/tab/${id}`, { start: 0 }, resp => {
+          console.log(resp);
+          if (resp.code === 200) {
+            const { list } = resp.data.items
+            console.log(list)
+            $('#list-intro').html(template('listProTemplate', {
+              list: list.slice(0, 10)
+            }))
+          }
         })
       }
     }

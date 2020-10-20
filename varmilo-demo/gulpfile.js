@@ -93,7 +93,7 @@ const server = () => {
     middleware() {
       return [
         createProxyMiddleware('/api', {
-          target: 'https://xiongmaoyouxuan.com',
+          target: 'http://xiongmaoyouxuan.com',
           changeOrigin: true
         })
       ]

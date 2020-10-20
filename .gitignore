@@ -1,6 +1,6 @@
 node_modules
 yarn.lock
 yarn-error.log
-package-lock.json
 dist
-varmilo-demo/src/html/1.html
+package-lock.json
+

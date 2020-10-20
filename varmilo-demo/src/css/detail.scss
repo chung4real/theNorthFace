@@ -226,3 +226,21 @@ main {
   color: #fff;
   font-size: 15px;
 }
+#shopCart{
+  position: fixed;
+  right: 0;
+  top: 300px;
+  text-align: center;
+}
+#shopCart a{
+  color: orangered;
+  
+}
+#shopNum{
+  width: 60px;
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+  background: orangered;
+  color: #000;
+}

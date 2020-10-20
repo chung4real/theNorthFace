@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>varmilo机械键盘</title>
+  <title>列表页</title>
   <link rel="stylesheet" href="/css/list.css">
 </head>
 
@@ -14,12 +14,14 @@
   <nav>
     <div class="nav-top">65%产品</div>
     <div class="nav-bottom">
-      <ul>
-        <li><a href="/html/list.html">键盘</a></li>
-        <li><a href="/html/list.html">桌垫</a></li>
-        <li><a href="/html/list.html">键帽</a></li>
-        <li><a href="/html/list.html">配件</a></li>
+      <ul id="tabList">
+
       </ul>
+      <script type="text/html" id="tabListTemplate">
+        {{each list tab}}
+        <li><a href="/html/list.html?id={{tab.id}}">{{tab.name}}</a></li>
+        {{/each}}
+      </script>
     </div>
   </nav>
   <!-- 列表页 -->
@@ -51,21 +53,22 @@
     </div>
     <!-- 商品展示部分 -->
     <div class="list-intro" id="list-intro">
-      <!-- 本地json数据渲染 -->
-      <script type="text/html" id="list-proTemplate">
-        {{each list item}}
-        <div class="list-pro">
-          <a href="/html/detail.html" target="_blank" >
-            <img src="{{item.src}}" alt="">
-            <div class="list-title">{{item.title}}</div>
-            <div class="list-model">{{item.model}}</div>
-            <div class="list-model">{{item.content}}</div>
-            <button class="purchase form-control">了解｜购买</button>
-          </a> 
-        </div>
-        {{/each}}
-      </script>
     </div>
+    <!-- 熊猫接口渲染 -->
+    <script type="text/html" id="listProTemplate">
+        {{each list shop}}
+          <div class="list-pro">
+            <a href="/html/detail.html" target="_blank">
+              <img src="{{shop.image}}" alt="">
+              <div class="list-title" style="white-space: nowrap;text-overflow: ellipsis; overflow: hidden;">{{shop.title}}</div>
+              <div class="list-model">现价：{{shop.price}}</div>
+              <div class="list-model">原价：{{shop.originPrice}}</div>
+              <button class="purchase form-control">了解｜购买</button>
+            </a> 
+          </div>
+        {{/each}}
+    </script>
+
   </main>
   <!-- 头部复用 -->
   <script src="/libs/require/require.min.js" data-main="/js/list"></script>
