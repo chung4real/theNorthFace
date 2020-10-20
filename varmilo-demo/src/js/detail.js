@@ -1,9 +1,11 @@
 require(['./config'], () => {
-  require(['template', 'header', 'footer'], (template) => {
+  require(['template', 'header', 'footer', 'elevateZoom', 'fly'], (template) => {
     class Detail {
       constructor() {
         this.render().then(() => {
           this.addToCart()
+          this.zoom()
+          this.fly()
         })
       }
       render() {
@@ -43,6 +45,13 @@ require(['./config'], () => {
         })
       }
       addToCart() {
+        /**
+          * 点击添加商品到购物车
+          * 1.如果是第一次添加商品，localStorage里没有shopCart数据 
+          *      则先创建一个json格式的数据，存储 商品的基本信息和商品数量，设置checked为true，将数据转换为字符串格式，存入localStorage里
+          * 2.如果不是第一次添加商品
+          *      拿到localStorage里存储的数据，将其转换为json格式，将新的商品的数据 push到这个json数据里，再将json数据转换为字符串，重新存入localStorage 覆盖之前的数据，实现数据更新
+          */
         $('#joinBtn').on('click', () => {
           // 先取,判断是否已有数据存在
           let cart = localStorage.getItem('cart')
@@ -70,12 +79,47 @@ require(['./config'], () => {
             localStorage.setItem('cart', JSON.stringify(cart))
           } else {
             // 购物车数据为空,存当前数据
+            // 初次加入购物车默认为true
             localStorage.setItem('cart', JSON.stringify([{
               ...this.detail,
               count: 1,
               check: true
             }]))
           }
+        })
+      }
+      zoom() {
+        $("#keyboard").elevateZoom({
+          scrollZoom: true,
+          // easing: true,
+          gallery: 'imgList',
+          cursor: 'crosshair',
+          // zoomType: "lens",
+          //zoomType: "inner"
+        })
+      }
+      fly() {
+        $('#joinBtn').on('click', function (e) {
+          $('<div class="fly">😋</div>').fly({
+            start: {
+              left: e.clientX,  //开始位置（必填）#fly元素会被设置成position: fixed
+              top: e.clientY,  //开始位置（必填）
+            },
+            end: {
+              left: $('#shopCart').offset().left, //结束位置（必填）
+              top: $('#shopCart').offset().top - $(document).scrollTop(),  //结束位置（必填）
+              // width: 100, //结束时高度
+              // height: 100, //结束时高度
+            },
+            // autoPlay: false, //是否直接运动,默认true
+            speed: 1.1, //越大越快，默认1.2
+            vertex_Rtop: 50, //运动轨迹最高点top值，默认20
+            onEnd: function () {
+              // 移除fly
+              this.destroy()
+              // header.calcCartCount()
+            } //结束回调
+          })
         })
       }
     }

@@ -18,20 +18,17 @@
 
     </div>
     <script type="text/html" id="detailTemplate">
-
         <div class="detail-left">
           <div class="keyboardImg" id="box">
-            <img id="keyboard" src="{{photo[0].url}}">
-            <span></span>
+            <img id="keyboard" src="{{photo[0].url}}" data-zoom-image="{{photo[0].url}}">
           </div>
           <ol id="imgList" class="imgList">
             {{each photo img}}
-            <li><img src="{{img.url}}"></li>
+            <li><img src="{{img.url}}" data-zoom-image="{{img.url}}"></li>
             {{/each}}
           </ol>
         </div>
-        <!-- 放大图片 -->
-        <!-- <div id="bigBox" class="bigBox"><img src="/images/detail/20191121110819.png" alt=""></div> -->
+
         <div class="detail-right">
           <div class="intro-top">
             <!-- 收藏 -->
