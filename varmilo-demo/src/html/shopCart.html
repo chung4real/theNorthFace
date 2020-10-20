@@ -12,36 +12,46 @@
   <header class="header"></header>
   <!-- 商品结算部分 -->
   <main>
-    <div class="shopCart">
-      <p>购物车</p>
-      <div class="product-intro">
-        <input type="checkbox" name="checkbox" id="confirmBuy">
-        <img src="/images/list/1.png">
-        <span class="pro-title"><a href="#">[茶轴MYD(双模)]68花旦娘（樱桃轴/静电容V2）</a></span>
-        <span class="choiceBox">
-          <button class="subBtn ">-</button>
-          <input type="text" value="1" class="form-control">
-          <button class="addBtn ">+</button>
-        </span>
-        <span class="pro-price">¥<em>1099.00</em></span>
-        <a href="#">
-          <img src="/images/shopCart/trash.jpg" id="trash">
-        </a>
-      </div>
-      <span>
-        <img src="/images/shopCart/shopCart.png" id="shopCart">
-      </span>
+    <div id="container">
+
     </div>
-    <div class="total-price">
-      <input type="checkbox" name="checkbox" id="allSelect">
-      <p class="total-text">全选&nbsp;&nbsp;&nbsp;&nbsp;已选择<em>0</em>个商品,共<em>0</em>件</p>
-      <p class="total-num">合计:¥<b>0.00</b></p>
-      <button class="settlement form-control">结算</button>
+    <script type="text/html" id="containerTemplate">
+      <div class="shopCart">
+        <p>购物车</p>
+        {{each cart shop}}
+        <div class="product-intro">
+          <input type="checkbox" name="checkbox" id="confirmBuy">
+          <a href="/html/detail.html?id={{shop.id}}"><img src="{{shop.photo[0].url}}"></a>
+          <span class="pro-title"><a href="/html/detail.html?id={{shop.id}}">{{shop.qunTitle.slice(0,15)}}...</a></span>
+          <span class="choiceBox">
+            <button class="subBtn ">-</button>
+            <input type="text" value="{{shop.count}}" class="form-control">
+            <button class="addBtn ">+</button>
+          </span>
+          <span class="pro-price">¥<em>{{shop.originPrice}}</em></span>
+          <span class="price">¥<em>{{shop.originPrice*shop.count}}</em></span>
+          <a href="#">
+            <img src="/images/shopCart/trash.jpg" id="trash">
+          </a>
+        </div>
+        {{/each}}
+      </div>
+      <div class="total-price">
+        <input type="checkbox" name="checkbox" id="allSelect">
+        <p class="total-text">全选</p>
+        <p class="total-num">合计:¥<b>0.00</b></p>
+        <button class="settlement form-control">结算</button>
+      </div>
+    </script>
+    <!-- 购物车没有数据显示的样式 -->
+    <div class="empty-frame" id="cartEmpty">
+      <img src="/images/shopCart/kong_gouwuche.png">
+      <b>购物车空空如也~🙅🏻‍♀️🙅🏻🍤🐷❤️</b>
     </div>
   </main>
   <footer></footer>
   <!-- 头尾复用 -->
-  <script src="/libs/require/require.min.js" data-main="/js/index"></script>
+  <script src="/libs/require/require.min.js" data-main="/js/shopCart"></script>
 </body>
 
 </html>
