@@ -53,7 +53,7 @@ main {
 #imgList img {
   width: 90px;
   height: 50px;
-  margin: 20px;
+  margin: 15px;
 }
 
 #imgList img:hover {
@@ -210,11 +210,10 @@ main {
   position: absolute;
   top: 670px;
   left: 100px;
-  color: #fff;
   background-color: #fc550f;
   font-size: 15px;
   border-radius: 10px;
-  
+  color: #fff;
 }
 .buyBtn{
   width: 140px;
@@ -248,4 +247,7 @@ main {
   text-align: center;
   background: orangered;
   color: #000;
+}
+.fly{
+  font-size: 40px;
 }

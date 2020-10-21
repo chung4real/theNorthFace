@@ -19,17 +19,17 @@
       <div class="shopCart">
         <p>购物车</p>
         {{each cart shop}}
-        <div class="product-intro">
-          <input type="checkbox" name="checkbox" id="confirmBuy" {{shop.check?'checked':''}}>
+        <div class="product-intro" data-id="{{shop.id}}">
+          <input type="checkbox" name="checkbox" class="confirmBuy" {{shop.check?'checked':''}}>
           <a href="/html/detail.html?id={{shop.id}}"><img src="{{shop.photo[0].url}}"></a>
           <span class="pro-title"><a href="/html/detail.html?id={{shop.id}}">{{shop.qunTitle.slice(0,15)}}...</a></span>
-          <span class="choiceBox">
+          <span class="choiceBox" data-id="">
             <button class="subBtn ">-</button>
             <input type="text" value="{{shop.count}}" class="form-control" style="text-align:center;">
             <button class="addBtn ">+</button>
           </span>
           <span class="pro-price">¥<em>{{shop.originPrice}}</em></span>
-          <span class="price">¥<em>{{shop.originPrice*shop.count}}</em></span>
+          <span class="price">¥<em>{{(shop.originPrice*shop.count).toFixed(2)}}</em></span>
           <a href="#">
             <img src="/images/shopCart/trash.jpg" id="trash">
           </a>
@@ -39,7 +39,7 @@
       <div class="total-price">
         <input type="checkbox" name="checkbox" id="allSelect">
         <p class="total-text">全选</p>
-        <p class="total-num">合计:¥</p>
+        <p class="total-number">合计:¥<b>0.00</b></p>
         <button class="settlement form-control">结算</button>
       </div>
     </script>

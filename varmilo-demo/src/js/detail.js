@@ -1,11 +1,10 @@
 require(['./config'], () => {
-  require(['template', 'header', 'footer', 'elevateZoom', 'fly'], (template) => {
+  require(['template', 'header', 'footer', 'elevateZoom', 'fly'], (template, header) => {
     class Detail {
       constructor() {
         this.render().then(() => {
           this.addToCart()
           this.zoom()
-          this.fly()
         })
       }
       render() {
@@ -53,6 +52,8 @@ require(['./config'], () => {
           *      拿到localStorage里存储的数据，将其转换为json格式，将新的商品的数据 push到这个json数据里，再将json数据转换为字符串，重新存入localStorage 覆盖之前的数据，实现数据更新
           */
         $('#joinBtn').on('click', () => {
+          this.fly()
+          this.calcCartCount()
           // 先取,判断是否已有数据存在
           let cart = localStorage.getItem('cart')
           if (cart) {
@@ -95,7 +96,7 @@ require(['./config'], () => {
           gallery: 'imgList',
           cursor: 'crosshair',
           // zoomType: "lens",
-          //zoomType: "inner"
+          // zoomType: "inner"
         })
       }
       fly() {
@@ -106,21 +107,31 @@ require(['./config'], () => {
               top: e.clientY,  //开始位置（必填）
             },
             end: {
-              left: $('#shopCart').offset().left, //结束位置（必填）
+              left: $('#shopCart').offset().left - $(document).scrollLeft(), //结束位置（必填）
               top: $('#shopCart').offset().top - $(document).scrollTop(),  //结束位置（必填）
               // width: 100, //结束时高度
               // height: 100, //结束时高度
             },
             // autoPlay: false, //是否直接运动,默认true
-            speed: 1.1, //越大越快，默认1.2
+            speed: 0.8, //越大越快，默认1.2
             vertex_Rtop: 50, //运动轨迹最高点top值，默认20
             onEnd: function () {
               // 移除fly
               this.destroy()
-              // header.calcCartCount()
+              // 重新计算购物车数量
+              // this.calcCartCount()
             } //结束回调
           })
         })
+      }
+      calcCartCount() {
+        let count = 0
+        let cart = localStorage.getItem('cart')
+        if (cart) {
+          cart = JSON.parse(cart)
+          count = cart.reduce((num, shop) => num + shop.count, 0)
+        }
+        $('#shopNum').html(count)
       }
     }
     new Detail()

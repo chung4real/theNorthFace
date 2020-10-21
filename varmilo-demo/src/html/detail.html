@@ -22,9 +22,11 @@
           <div class="keyboardImg" id="box">
             <img id="keyboard" src="{{photo[0].url}}" data-zoom-image="{{photo[0].url}}">
           </div>
-          <ol id="imgList" class="imgList">
+          <ol id="imgList" class="imgList" data-zoom-image="{{photo[0].url}}">
             {{each photo img}}
-            <li><img src="{{img.url}}" data-zoom-image="{{img.url}}"></li>
+            <a href="#" data-image="{{img.url}}" data-zoom-image="{{img.url}}">
+              <img id="img_01" src="{{img.url}}" />
+            </a>
             {{/each}}
           </ol>
         </div>
