@@ -8,6 +8,9 @@ require(['./config'], () => {
           this.checksChange()
           this.calculateTotalPrice()
           this.changeAllCheckStatus()
+          this.subClick()
+          this.addClick()
+          this.remove()
         }
       }
       render() {
@@ -23,9 +26,6 @@ require(['./config'], () => {
           $('#cartEmpty').show()
           $('#cartData').hide()
         }
-        this.subClick()
-        this.addClick()
-        this.remove()
       }
       // 默认全选
       setAllCheckStatus() {
@@ -37,32 +37,31 @@ require(['./config'], () => {
         const _this = this
         $('#allSelect').on('change', function () {
           _this.cart = _this.cart.map(shop => {
-            shop.checked = $(this).prop('checked')   
+            shop.check = $(this).prop('checked')
             return shop
           })
           localStorage.setItem('cart', JSON.stringify(_this.cart))
-          $('.confirmBuy').prop('checked',$(this).prop('checked'))
+          $('.confirmBuy').prop('checked', $(this).prop('checked'))
           _this.calculateTotalPrice()
         })
       }
-      // 选中状态的改变
+      // 单选状态的改变
       checksChange() {
         const _this = this
-        $('.confirmBuy').on('change', function () {
-          const id = $(this).parents('.product-intro').data('id')
-          _this.cart = _this.cart.map(shop => {
-            if (shop.id === id) {
-              shop.check = $(this).prop('checked')
-            }
-            // 无论条件是否成里,这里都要return出来
-            return shop
-          })
-          // 存localStorage
-          localStorage.setItem('cart', JSON.stringify(_this.cart))
-          // 重新设置全选
-          _this.setAllCheckStatus()
-          // 重新计算总价
-          _this.calculateTotalPrice()
+        $('#container').on('change', 'input', function () {
+          if ($(this).is('.confirmBuy')) {
+            const id = $(this).parents('.product-intro').data('id')
+            _this.cart = _this.cart.map(shop => {
+              if (shop.id === id) {
+                shop.check = $(this).prop('checked')
+              }
+              // 无论条件是否成里,这里都要return出来
+              return shop
+            })
+            localStorage.setItem('cart', JSON.stringify(_this.cart))
+            _this.setAllCheckStatus()
+            _this.calculateTotalPrice()
+          }
         })
       }
       // 计算总价
@@ -77,54 +76,69 @@ require(['./config'], () => {
       // 点击-按钮进行购物车数量变更
       subClick() {
         const _this = this
-        $('.subBtn').on('click', function () {
-          const subId = $(this).parents('.product-intro').data('id')
-          _this.cart = _this.cart.map(shop => {
-            if (shop.id === subId) {
-              shop.count--
-              if (shop.count <= 0) {
-                shop.count = 1
+        $('#container').on('click', 'button', function () {
+          if ($(this).is('.subBtn')) {
+            const subId = $(this).parents('.product-intro').data('id')
+            console.log(subId)
+            _this.cart = _this.cart.map(shop => {
+              if (shop.id === subId) {
+                shop.count--
+                if (shop.count <= 0) {
+                  shop.count = 1
+                }
+                $(this).next().val(shop.count).parent().siblings('.price').find('em').html((shop.originPrice * shop.count).toFixed(2))
               }
-            }
-            return shop
-          })
-          localStorage.setItem('cart', JSON.stringify(_this.cart))
-          _this.render()
-          _this.calculateTotalPrice()
+              return shop
+            })
+            localStorage.setItem('cart', JSON.stringify(_this.cart))
+            _this.calculateTotalPrice()
+          }
         })
+        // $('.subBtn').on('click', function () {
+
+        // })
       }
       // 点击+按钮进行购物车数量变更
       addClick() {
         const _this = this
-        $('.addBtn').on('click', function () {
-          const addId = $(this).parents('.product-intro').data('id')
-          _this.cart = _this.cart.map(shop => {
-            if (shop.id === addId)
-              shop.count++
-            return shop
-          })
-          localStorage.setItem('cart', JSON.stringify(_this.cart))
-          _this.render()
-          _this.calculateTotalPrice()
+        // $('.addBtn').on('click', function () {
+        // })
+        $('#container').on('click', 'button', function () {
+          if ($(this).is('.addBtn')) {
+            const addId = $(this).parents('.product-intro').data('id')
+            console.log(addId)
+            _this.cart = _this.cart.map(shop => {
+              if (shop.id === addId) { shop.count++ }
+              $(this).prev().val(shop.count).parent().siblings('.price').find('em').html((shop.originPrice * shop.count).toFixed(2))
+              return shop
+            })
+            localStorage.setItem('cart', JSON.stringify(_this.cart))
+            _this.calculateTotalPrice()
+          }
         })
       }
       // 移除商品
       remove() {
         const _this = this
-        $('#trash').on('click', function () {
-          const removeId = $(this).parents('.product-intro').data('id')
-          console.log(removeId);
-          _this.cart = _this.cart.filter(shop => {
-            return shop.id !== removeId
-          })
-          if (_this.cart.length === 0) {
-            localStorage.removeItem('cart')
-          } else {
-            localStorage.setItem('cart', JSON.stringify(_this.cart))
+        $('#container').on('click', 'p', function () {
+          if ($(this).is('.trash')) {
+            const removeId = $(this).parents('.product-intro').data('id')
+            _this.cart = _this.cart.filter(shop => {
+              return shop.id !== removeId
+            })
+            if (_this.cart.length === 0) {
+              localStorage.removeItem('cart')
+              $('#container').hide()
+              $('#cartEmpty').show()
+            } else {
+              localStorage.setItem('cart', JSON.stringify(_this.cart))
+              $('#allSelect').prop('checked', false)
+              $(this).parents('.product-intro').remove()
+              _this.calculateTotalPrice()
+              _this.setAllCheckStatus()
+              // _this.render()
+            }
           }
-          $('#allSelect').prop('checked', false)
-          _this.calculateTotalPrice()
-          _this.render()
         })
       }
     }

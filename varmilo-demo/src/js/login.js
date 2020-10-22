@@ -4,6 +4,7 @@ require(['./config'], () => {
       constructor() {
         this.userLogin()
       }
+      
       userLogin() {
         $('#login').on('click', function (e) {
           const name = $('#usrName').val()
@@ -11,16 +12,15 @@ require(['./config'], () => {
           let userList = JSON.parse(localStorage.getItem('userList'))
           if (userList) {
             // 该用户已经注册
-            let isExist = Array.from(userList).some(user => {
+            let isExist = userList.some(user => {
               return user.userName === name && user.pwd === pwd
             })
-            if (isExist) {
+            if (isExist) {   
               localStorage.setItem('username', JSON.stringify(userList))
               header.getUsrInfo()
               location.href = '/index.html'
               $('#usrName').val('')
               $('#usrPwd').val('')
-              header.getUsrInfo()
             } else {
               location.href = '/html/login.html'
             }
