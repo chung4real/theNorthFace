@@ -91,8 +91,8 @@ require(['./config'], () => {
       }
       zoom() {
         $("#keyboard").elevateZoom({
-          scrollZoom: true,
-          // easing: true,
+          // scrollZoom: true,
+          easing: true,
           gallery: 'imgList',
           cursor: 'crosshair',
           // zoomType: "lens",
@@ -109,8 +109,6 @@ require(['./config'], () => {
             end: {
               left: $('#shopCart').offset().left - $(document).scrollLeft(), //结束位置（必填）
               top: $('#shopCart').offset().top - $(document).scrollTop(),  //结束位置（必填）
-              // width: 100, //结束时高度
-              // height: 100, //结束时高度
             },
             // autoPlay: false, //是否直接运动,默认true
             speed: 0.8, //越大越快，默认1.2

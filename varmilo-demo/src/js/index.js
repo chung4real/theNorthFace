@@ -30,14 +30,14 @@ require(['./config'], () => {
       }
     })
     mySwiper.el.onmouseover = function () {
-      mySwiper.navigation.$nextEl.removeClass('hide');
-      mySwiper.navigation.$prevEl.removeClass('hide');
+      mySwiper.navigation.$nextEl.removeClass('hide')
+      mySwiper.navigation.$prevEl.removeClass('hide')
       // 用户移入轮播图停止播放
       mySwiper.autoplay.stop()
     }
     mySwiper.el.onmouseout = function () {
-      mySwiper.navigation.$nextEl.addClass('hide');
-      mySwiper.navigation.$prevEl.addClass('hide');
+      mySwiper.navigation.$nextEl.addClass('hide')
+      mySwiper.navigation.$prevEl.addClass('hide')
       // 用户移除轮播图继续播放
       mySwiper.autoplay.start()
     }
